@@ -47,6 +47,8 @@ A real-time financial dashboard built with Python, Streamlit, and Plotly. This a
 3.  **Run the Application:**
     ```bash
     streamlit run main.py
+    or
+    streamlit run main.py --server.enableCORS false --server.enableXsrfProtection false
     ```
 
 ---
