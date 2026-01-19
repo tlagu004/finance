@@ -3,7 +3,6 @@ import pandas as pd
 import plotly.express as px
 import json
 import os
-
 # Set page metadata for the Streamlit app, including title, icon, and layout.
 st.set_page_config(page_title="Finance App", page_icon="💰", layout="wide")
 
@@ -13,7 +12,7 @@ category_file = "categories.json"
 # Initialize session state for categories if it doesn't exist.
 if "categories" not in st.session_state:
     st.session_state.categories = {
-        "Uncategorized": []
+        "Other": []
     }
 
 # Load transaction categories from the specified JSON file if it exists.
@@ -27,9 +26,9 @@ def save_categories():
 
 # Function to categorize transactions based on keywords in the 'Details' column.
 def categorize_transactions(df):
-    df["Category"] = "Uncategorized"
+    df["Category"] = "Other"
     for category, keywords in st.session_state.categories.items():
-        if category == "Uncategorized" or not keywords:
+        if category == "Other" or not keywords:
             continue
         lowered_keywords = [keyword.lower().strip() for keyword in keywords]
         for idx, row in df.iterrows():
@@ -37,6 +36,19 @@ def categorize_transactions(df):
             if details in lowered_keywords:
                 df.at[idx, "Category"] = category
     return df
+
+def display_savings_goal(total_balance):
+    st.sidebar.header("🎯 Savings Goal")
+    goal_name = st.sidebar.text_input("What are you saving for?")
+    goal_amount = st.sidebar.number_input("Goal Amount ($)", min_value=0.0, value=1000.0)
+    progress_percentage = min(total_balance / goal_amount, 1.0)
+    st.sidebar.write(f"Progress for {goal_name}")
+    st.sidebar.progress(progress_percentage, text=f"{progress_percentage * 100:.2f}%")
+    st.sidebar.write(f" {total_balance:,.2f} / {goal_amount:,.2f}")
+
+    if total_balance >= goal_amount:
+        st.balloons()
+        st.sidebar.success("Goal Reached 🥅")
 
 # Function to add a new keyword to a specified category and save the updated categories.
 def add_keyword_to_category(category, keyword):
@@ -136,6 +148,7 @@ def main():
                 total_payments = credits_df["Amount"].sum()
                 st.metric("Total Payments", f"{total_payments: ,.2f} AED")
                 st.write( credits_df[["Date", "Details", "Amount"]])
+                display_savings_goal(total_payments)
 
 # Run the main function to start the application.
 main()

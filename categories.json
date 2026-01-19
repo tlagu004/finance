@@ -1,1 +1,10 @@
-{"Uncategorized": [], "Shopping": ["AMAZON AE"], "Travel": ["ETIHAD AIRWAYS", "UBER AE"], "Vacation": ["HILTON DUBAI"], "Subscriptions": ["NETFLIX.COM", "APPLE.COM BILL"], "Insurance": ["EMIRATES INSURANCE"], "Car Ride": ["UBER AE"], "Hotel": ["NOON.COM", "ZOMATO AE", "BOOKING.COM"], "Banks": ["LULU HYPERMARKET", "ADCB BANK FEE"], "Laundry": ["SPINNEYS AE"]}
+{
+    "Income": ["Card Payment Received", "Salary"],
+    "Groceries": ["LULU HYPERMARKET", "SPINNEYS", "CARREFOUR", "VIVA"],
+    "Shopping": ["AMAZON", "NOON.COM", "NAMSHI"],
+    "Travel": ["ETIHAD AIRWAYS", "EMIRATES", "BOOKING.COM", "HILTON"],
+    "Transport": ["UBER", "CAREEM", "RTA"],
+    "Entertainment": ["NETFLIX.COM", "SPOTIFY", "APPLE.COM BILL"],
+    "Bills & Fees": ["ADCB BANK FEE", "EMIRATES INSURANCE", "ETISALAT", "DU"],
+    "Other": []
+}

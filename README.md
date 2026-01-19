@@ -74,3 +74,9 @@ The user provides their own dataset in the form of a CSV file. The expected CSV 
 ## 📝 License
 
 This project is open-source and available under the MIT License.
+
+---
+
+## 🙏 Thank You
+
+A special thank you to Tech With Tim for their inspiration and guidance for this project
