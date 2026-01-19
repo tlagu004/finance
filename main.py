@@ -75,7 +75,7 @@ def main():
                         st.rerun()
 
                 st.subheader("Your expenses")
-                edited_df = st.data_editor(
+                edited_debits_df = st.data_editor(
                     st.session_state.debits_df[["Date", "Details", "Amount", "Category"]],
                     column_config={
                         "Date": st.column_config.DateColumn("Date", format="DD/MM/YYYY"),
@@ -87,11 +87,11 @@ def main():
                     },
                     hide_index=True,
                     use_container_width=True,
-                    key="category_editor"
+                    key="debits_category_editor"
                 )
                 save_button = st.button("Apply Changes", type="primary")
                 if save_button:
-                    for idx, row in edited_df.iterrows():
+                    for idx, row in edited_debits_df.iterrows():
                         new_category = row["Category"]
                         if new_category == st.session_state.debits_df.at[idx, "Category"]: continue
 
@@ -120,6 +120,6 @@ def main():
                 st.subheader("Payments Summary")
                 total_payments = credits_df["Amount"].sum()
                 st.metric("Total Payments", f"{total_payments: ,.2f} AED")
-                st.write(credits_df)
+                st.write( credits_df[["Date", "Details", "Amount"]])
 
 main()
