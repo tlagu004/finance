@@ -6,6 +6,21 @@ import os
 
 st.set_page_config(page_title="Finance App", page_icon="💰", layout="wide")
 
+category_file = "categories.json"
+
+if "categories" not in st.session_state:
+    st.session_state.categories = {
+        "Uncategorized": []
+    }
+
+if os.path.exists(category_file):
+    with open(category_file, "r") as f:
+        st.session_state.categories = json.load(f)
+
+def save_categories():
+    with open(category_file, "w") as f:
+        json.dump(st.session_state.categories, f)
+
 def load_transactions(file):
     try:
         df = pd.read_csv(file)
@@ -29,6 +44,15 @@ def main():
 
             tab1, tab2 = st.tabs(["Expenses (Debits)", "Income (Credits)"])
             with tab1:
+                new_category = st.text_input("New Category Name")
+                add_button = st.button("Add Category")
+
+                if add_button and new_category:
+                    if new_category not in st.session_state.categories:
+                        st.session_state.categories[new_category] = []
+                        save_categories()
+                        st.rerun()
+
                 st.write(debits_df)
 
             with tab2:
