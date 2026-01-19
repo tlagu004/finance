@@ -4,12 +4,30 @@ A real-time financial dashboard built with Python, Streamlit, and Plotly. This a
 
 ---
 
-## 🚀 Features
+## 🚀 App's purpose
 
--   **Interactive Visualizations**: Dynamic pie charts and bar graphs using Plotly.
--   **Data Management**: Easy data manipulation powered by Pandas.
--   **Clean UI**: Simple, intuitive dashboard interface via Streamlit.
--   **Expense Tracking**: Categorize and monitor your monthly spending.
+A financial tracker to visualize and manage expenses. Users can upload a CSV of transactions, categorize them, and view summaries.
+
+---
+
+## 📀 Dataset used
+
+The user provides their own dataset in the form of a CSV file. The expected CSV format is: `Date`, `Details`, `Amount`, `Debit/Credit`.
+
+---
+
+## 📖 User instructions
+
+1.  **Run the app:** `streamlit run main.py`
+2.  **Upload CSV:** Use the file uploader to select your transaction CSV.
+3.  **Categorize:**
+    *   Create new categories.
+    *   Assign transactions to categories in the "Expenses (Debits)" tab.
+    *   Changes are saved automatically.
+4.  **View Summaries:**
+    *   See a breakdown of expenses by category.
+    *   View a pie chart of your spending.
+    *   Check total income in the "Income (Credits)" tab.
 
 ---
 
